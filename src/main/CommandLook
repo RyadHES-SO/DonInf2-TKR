@@ -1,10 +1,9 @@
 public class CommandLook extends Command {
 
 
-
-
-
-
+public CommandLook(String verb, String description) {
+    super(verb, description);
+}
 
 
 }
