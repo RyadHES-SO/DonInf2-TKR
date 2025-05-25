@@ -1,23 +1,24 @@
 public class Command {
+    private String verb;
+    private String description;
+    private ICommand action;
 
-String verb;
-String description;
+    public Command(String verb, String description, ICommand action) {
+        this.verb = verb;
+        this.description = description;
+        this.action = action;
+    }
 
+    public String getVerb() {
+        return verb;
+    }
 
-public Command (String verb, String description){
-this.verb = verb;
-this.description = description;
+    public String getDescription() {
+        return description;
+    }
 
+    public void execute(String[] args) {
+        action.execute(args);
+    }
 }
 
-public String getVerb(){
-    return this.verb;
-}
-
-public String getDescription(){
-    return this.description;
-}
-
-
-
-}
