@@ -46,5 +46,4 @@ public class Location {
     public List<Item> getItems() {
         return itemLocation;
     }
-
 }
