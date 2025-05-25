@@ -1,6 +1,6 @@
 package main;
 
-public class ICommand {
+public interface ICommand {
 
 
     

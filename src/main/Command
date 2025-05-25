@@ -1,0 +1,23 @@
+public class Command {
+
+String verb;
+String description;
+
+
+public Command (String verb, String description){
+this.verb = verb;
+this.description = description;
+
+}
+
+public String getVerb(){
+    return this.verb;
+}
+
+public String getDescription(){
+    return this.description;
+}
+
+
+
+}

@@ -9,6 +9,6 @@ public Letter (String name, String description, String content) {
     super(name, description);
     this.content = content;
 
-}
+ }
 } 
 
