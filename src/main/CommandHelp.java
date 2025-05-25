@@ -1,3 +1,5 @@
+package main;
+
 public class CommandHelp implements ICommand {
 
     private CommandRegistry registry;
