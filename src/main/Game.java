@@ -7,6 +7,8 @@ public class Game {
     public Game(){
         System.out.println("Initializing game...");
         registry = new CommandRegistry();  // Instanciation du registre
+        Worldmap worldmap = WorldBuilder.buildWorld();
+        Player player1 = new Player("player1");
     }
     
     public void run() {
