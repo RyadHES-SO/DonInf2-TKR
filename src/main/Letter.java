@@ -1,5 +1,3 @@
-
-
 public class Letter extends Item {
 
     private String content;

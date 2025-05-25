@@ -1,5 +1,3 @@
-
-
 public class Key extends Item {
     private Location KeyLocation;
 
