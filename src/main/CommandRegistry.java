@@ -32,4 +32,6 @@ public class CommandRegistry {
             System.out.println("- " + name);
         }
     }
+
+    
 }
