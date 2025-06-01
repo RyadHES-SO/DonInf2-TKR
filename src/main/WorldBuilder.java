@@ -6,10 +6,10 @@ public class WorldBuilder {
 
         // Création des lieux
         Location maison = new Location("Maison", "Ta maison, point de départ du voyage.", true);
-        Location foret = new Location("Forêt", "Une forêt verte remplie d'oiseaux.", true);
+        Location foret = new Location("Forêt", "Une forêt verte remplie d'oiseaux.", false);
         Location grotte = new Location("Grotte", "Une grotte sombre, semble verrouillée.", false);
-        Location lac = new Location("Lac", "Un lac paisible entouré de roseaux.", true);
-        Location montagne = new Location("Montagne", "Une montagne abrupte au sommet enneigé.", true);
+        Location lac = new Location("Lac", "Un lac paisible entouré de roseaux.", false);
+        Location montagne = new Location("Montagne", "Une montagne abrupte au sommet enneigé.", false);
 
         // Placement dans la carte
         world.addLocation(maison, 1, 1);      // centre
@@ -24,9 +24,8 @@ public class WorldBuilder {
         // Création des clés pour les zones verrouillées
         Key cleDeLaGrotte = new Key(
         "Clé de la grotte",
-        "Une vieille clé rouillée. Elle semble pouvoir ouvrir la grotte.",
-        grotte
-        );
+        "Une vieille clé rouillée. Elle semble pouvoir ouvrir la grotte.", grotte);
+
 
         foret.addItem(cleDeLaGrotte); // On place la clé dans la forêt
 
