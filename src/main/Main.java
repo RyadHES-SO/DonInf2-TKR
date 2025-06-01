@@ -8,7 +8,7 @@ import utils.Color;
 import utils.StringStyling;
 import utils.Style;
 
-public class Main {
+public class main {
 
     public static void main(String[] args) {
         // you can safely remove those examples lines
