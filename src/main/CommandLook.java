@@ -1,0 +1,8 @@
+public class CommandLook extends Command {
+
+
+public CommandLook(String verb, String description) {
+
+    super("look", "permet de développer l'environnement");
+}
+}

@@ -12,9 +12,9 @@ public class Main {
 
     public static void main(String[] args) {
         // you can safely remove those examples lines
-        StringManipulation.Example();
-        ConsoleStylingExample.Example();
-        UserInputExample.Example();
+        //StringManipulation.Example();
+       // ConsoleStylingExample.Example();
+        //UserInputExample.Example();
 
         System.out.println(StringStyling.StyleString("Starting...", Style.ITALIC, Color.BLACK));
         Game game = new Game();
