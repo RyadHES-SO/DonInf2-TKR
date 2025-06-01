@@ -5,7 +5,7 @@ import utils.Color;
 import utils.StringStyling;
 import utils.Style;
 
-public class main {
+public class Main {
 
     public static void main(String[] args) {
         // you can safely remove those examples lines
