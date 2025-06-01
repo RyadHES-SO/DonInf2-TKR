@@ -34,6 +34,8 @@ public class WorldBuilder {
          foret.addItem(cleGrotte);       // Clé pour la grotte
          grotte.addItem(cleLac);         // Clé pour le lac
          lac.addItem(cleMontagne);       // Clé pour la montagne
+
+        
  
         
 
