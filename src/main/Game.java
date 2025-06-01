@@ -16,6 +16,7 @@ public class Game {
         
         // Ajouter la commande "help"
         registry.addCommand("help", new CommandHelp(registry));
+       // registry.addCommand(name:"look", new CommandLook(registry));
 
         // Boucle d'écoute des commandes
         Scanner scanner = new Scanner(System.in);
