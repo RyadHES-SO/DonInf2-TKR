@@ -1,4 +1,4 @@
-package main;
+
 
 public class Worldmap {
     private Location[][] worldmap;

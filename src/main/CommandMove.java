@@ -1,17 +1,21 @@
-package main;
-
-public class C_Move {
+public class CommandMove implements ICommand {
     private Worldmap world;
 
-    public C_Move(Worldmap world) {
+    public CommandMove(Worldmap world) {
         this.world = world;
     }
 
-    public void execute(String direction) {
+    @Override
+    public void execute(String[] args) {
+        if (args.length == 0) {
+            System.out.println("Usage : move <north|south|east|west>");
+            return;
+        }
+
+        String direction = args[0].toLowerCase();
+
         int row = world.getPlayerRow();
         int col = world.getPlayerColumn();
-
-        direction = direction.toLowerCase();
 
         switch (direction) {
             case "north":
@@ -32,5 +36,15 @@ public class C_Move {
         }
 
         world.tryMovePlayerTo(row, col);
+    }
+
+    @Override
+    public String getVerb() {
+        return "move";
+    }
+
+    @Override
+    public String getDescription() {
+        return "Déplace le joueur dans la direction spécifiée";
     }
 }

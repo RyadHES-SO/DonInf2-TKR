@@ -1,4 +1,4 @@
-package main;
+
 
 public class WorldBuilder {
     public static Worldmap buildWorld() {
@@ -7,7 +7,7 @@ public class WorldBuilder {
         // Création des lieux
         Location maison = new Location("Maison", "Ta maison, point de départ du voyage.", true);
         Location foret = new Location("Forêt", "Une forêt verte remplie d'oiseaux.", false);
-        Location grotte = new Location("Grotte", "Une grotte sombre, semble verrouillée.", false);
+        Location grotte = new Location("Grotte", "Une grotte sombre, semble verrouillée.", true);
         Location lac = new Location("Lac", "Un lac paisible entouré de roseaux.", false);
         Location montagne = new Location("Montagne", "Une montagne abrupte au sommet enneigé.", false);
 
