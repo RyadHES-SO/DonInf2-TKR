@@ -22,12 +22,20 @@ public class WorldBuilder {
         world.setPlayerLocation(1, 1);
 
         // Création des clés pour les zones verrouillées
-        Key cleDeLaGrotte = new Key(
-        "Clé de la grotte",
-        "Une vieille clé rouillée. Elle semble pouvoir ouvrir la grotte.", grotte);
-
-
-        foret.addItem(cleDeLaGrotte); // On place la clé dans la forêt
+        // Création des clés
+         // Création des clés
+         Key cleForet = new Key("Clé de la forêt", "Une clé avec une feuille gravée, elle semble déverrouiller un lieu naturel.", foret);
+         Key cleGrotte = new Key("Clé de la grotte", "Une vieille clé rouillée. Elle semble pouvoir ouvrir la grotte.", grotte);
+         Key cleLac = new Key("Clé du lac", "Une clé ornée de vagues, parfaite pour une zone aquatique.", lac);
+         Key cleMontagne = new Key("Clé de la montagne", "Une clé lourde et solide, comme taillée dans la roche.", montagne);
+ 
+         // Placement des clés dans les lieux accessibles
+         maison.addItem(cleForet);       // Clé pour la forêt
+         foret.addItem(cleGrotte);       // Clé pour la grotte
+         grotte.addItem(cleLac);         // Clé pour le lac
+         lac.addItem(cleMontagne);       // Clé pour la montagne
+ 
+        
 
         return world;
     }
