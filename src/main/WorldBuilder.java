@@ -21,6 +21,15 @@ public class WorldBuilder {
         // Position de départ du joueur
         world.setPlayerLocation(1, 1);
 
+        // Création des clés pour les zones verrouillées
+        Key cleDeLaGrotte = new Key(
+        "Clé de la grotte",
+        "Une vieille clé rouillée. Elle semble pouvoir ouvrir la grotte.",
+        grotte
+        );
+
+        foret.addItem(cleDeLaGrotte); // On place la clé dans la forêt
+
         return world;
     }
 }
