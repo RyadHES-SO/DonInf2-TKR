@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Player {
     private String name;
     private Inventory inventory;
@@ -13,5 +15,9 @@ public class Player {
 
     public Inventory getInventory() {
         return inventory;
+    }
+
+     public List<Item> getItems() {
+        return inventory.getInventory();
     }
 }

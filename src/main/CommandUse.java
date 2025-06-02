@@ -16,7 +16,7 @@ public class CommandUse extends Command {
 
         String itemName = String.join(" ", args).toLowerCase();
 
-        Item item = player.getInventory().stream()
+        Item item = player.getItems().stream()
                 .filter(i -> i.getName().equalsIgnoreCase(itemName))
                 .findFirst()
                 .orElse(null);
