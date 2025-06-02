@@ -50,7 +50,7 @@ public class Worldmap {
             playerRow = row;
             playerColumn = column;
         } else {
-            System.out.println("Impossible d'accéder à cette position (verrouillée ou hors limites).");
+            System.out.println("Unable to access this position (locked or out of bounds).");
         }
     }
 
@@ -64,14 +64,14 @@ public class Worldmap {
             if (next.getState()) {
                 playerRow = newRow;
                 playerColumn = newColumn;
-                System.out.println("Tu te déplaces vers : " + next.getName());
+                System.out.println("You moved to : " + next.getName());
                 System.out.println(next.getDescription());
                 return true;
             } else {
-                System.out.println("Cette zone est verrouillée.");
+                System.out.println("This location is locked.");
             }
         } else {
-            System.out.println("Impossible d'aller dans cette direction.");
+            System.out.println("Impossible to go in that direction.");
         }
         return false;
     }

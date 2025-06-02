@@ -2,7 +2,7 @@ public class CommandMove extends Command {
     private Worldmap world;
 
     public CommandMove(Worldmap worldmap) {
-        super("move", "Déplace le joueur dans la direction spécifiée");
+        super("move", "Moves the player in the specified direction");
         this.world = worldmap;
     }
 
@@ -32,7 +32,7 @@ public class CommandMove extends Command {
                 col -= 1;
                 break;
             default:
-                System.out.println("Commande invalide. Utilise : move north/south/east/west");
+                System.out.println("Invalid Commande! use : move north/south/east/west");
                 return;
         }
 
