@@ -1,3 +1,4 @@
+/*
 public class CommandUse extends Command {
 
     private Player player;
@@ -34,4 +35,4 @@ public class CommandUse extends Command {
             System.out.println("Cet objet ne peut pas être utilisé.");
         }
     }
-}
+}*/

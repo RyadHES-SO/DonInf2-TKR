@@ -2,7 +2,7 @@
 
 public class WorldBuilder {
     public static Worldmap buildWorld() {
-        Worldmap world = new Worldmap(4, 4);
+        Worldmap world = new Worldmap(3, 4);
 
         // Création des lieux
         Location maison = new Location("Maison", "Ta maison, point de départ du voyage.", true);
