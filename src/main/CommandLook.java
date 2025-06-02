@@ -1,6 +1,13 @@
 public class CommandLook extends Command {
+    private CommandRegistry registry;
 
-    public CommandLook(ICommand action) {
-        super("look", "Permet d'examiner l'environnement.", action);
+    public CommandLook(CommandRegistry registry) {
+        super("look", "Permet d'examiner l'environnement.");
     }
+
+    @Override
+    public void execute(String[] args) {
+        registry.printHelp();
+    }
+
 }

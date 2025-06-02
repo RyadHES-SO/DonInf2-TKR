@@ -1,19 +1,10 @@
-public class CommandUse implements ICommand {
+public class CommandUse extends Command {
 
     private Player player;
 
     public CommandUse(Player player) {
+        super("use", "Permet d'utiliser un objet de l'inventaire");
         this.player = player;
-    }
-
-    @Override
-    public String getVerb() {
-        return "use";
-    }
-
-    @Override
-    public String getDescription() {
-        return "permet d'utiliser un objet";
     }
 
     @Override
@@ -23,7 +14,7 @@ public class CommandUse implements ICommand {
             return;
         }
 
-        String itemName = String.join(" ", args); // ex : "Clé de la grotte"
+        String itemName = String.join(" ", args).toLowerCase();
 
         Item item = player.getInventory().stream()
                 .filter(i -> i.getName().equalsIgnoreCase(itemName))
@@ -31,12 +22,14 @@ public class CommandUse implements ICommand {
                 .orElse(null);
 
         if (item == null) {
-            System.out.println("Vous n'avez pas cet objet.");
+            System.out.println("Vous n'avez pas d'objet nommé \"" + itemName + "\".");
             return;
         }
 
-        if (item instanceof Key) {
-            ((Key) item).use();
+        if (item instanceof Usable usableItem) {
+            usableItem.use(player);  // Option : passer le joueur ou la map si nécessaire
+        } else if (item instanceof Key key) {
+            key.use();  // Si la clé n'a pas besoin d'argument
         } else {
             System.out.println("Cet objet ne peut pas être utilisé.");
         }

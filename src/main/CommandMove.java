@@ -1,8 +1,9 @@
-public class CommandMove implements ICommand {
+public class CommandMove extends Command {
     private Worldmap world;
 
-    public CommandMove(Worldmap world) {
-        this.world = world;
+    public CommandMove(Worldmap worldmap) {
+        super("move", "Déplace le joueur dans la direction spécifiée");
+        this.world = worldmap;
     }
 
     @Override
@@ -36,15 +37,5 @@ public class CommandMove implements ICommand {
         }
 
         world.tryMovePlayerTo(row, col);
-    }
-
-    @Override
-    public String getVerb() {
-        return "move";
-    }
-
-    @Override
-    public String getDescription() {
-        return "Déplace le joueur dans la direction spécifiée";
     }
 }

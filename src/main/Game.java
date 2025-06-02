@@ -23,7 +23,7 @@ public class Game {
         // registry.addCommand(name:"look", new CommandLook(registry));
         // Créer la commande move et l'ajouter
         CommandMove moveAction = new CommandMove(worldmap);
-        Command moveCommand = new Command("move", "Déplace le joueur (north, south, east, west)", moveAction);
+        Command moveCommand = new CommandMove(worldmap);
         registry.addCommand("move", moveCommand);
 
         // ajout Teicir -- commande Use : //
