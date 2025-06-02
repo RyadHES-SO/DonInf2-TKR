@@ -4,13 +4,14 @@ import java.util.Scanner;
 public class Game {
     private CommandRegistry registry;
     private Worldmap worldmap;
+    private Player player;
     
 
     public Game() {
         System.out.println("Initializing game...");
         registry = new CommandRegistry(); // Instanciation du registre
         worldmap = WorldBuilder.buildWorld();
-        Player player1 = new Player("player1");
+        player = new Player("player1");
     }
 
     public void run() {
@@ -18,6 +19,7 @@ public class Game {
 
         // Ajouter la commande "help"
         registry.addCommand("help", new CommandHelp(registry));
+
         // registry.addCommand(name:"look", new CommandLook(registry));
         // Créer la commande move et l'ajouter
         CommandMove moveAction = new CommandMove(worldmap);

@@ -1,5 +1,3 @@
-package main;
-
 public class CommandUse implements ICommand {
 
     private Player player;
@@ -9,13 +7,23 @@ public class CommandUse implements ICommand {
     }
 
     @Override
+    public String getVerb() {
+        return "use";
+    }
+
+    @Override
+    public String getDescription() {
+        return "permet d'utiliser un objet";
+    }
+
+    @Override
     public void execute(String[] args) {
         if (args.length == 0) {
             System.out.println("Quel objet voulez-vous utiliser ?");
             return;
         }
 
-        String itemName = String.join(" ", args);  // ex : "Clé de la grotte"
+        String itemName = String.join(" ", args); // ex : "Clé de la grotte"
 
         Item item = player.getInventory().stream()
                 .filter(i -> i.getName().equalsIgnoreCase(itemName))

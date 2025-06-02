@@ -1,13 +1,12 @@
-public class Command implements ICommand {
+public abstract class Command implements ICommand {
     private String verb;
     private String description;
-    private ICommand action;
 
-    public Command(String verb, String description, ICommand action) {
+    public Command(String verb, String description) {
         this.verb = verb;
         this.description = description;
-        this.action = action;
     }
+
     @Override
     public String getVerb() {
         return verb;
@@ -17,9 +16,7 @@ public class Command implements ICommand {
     public String getDescription() {
         return description;
     }
-    @Override
-    public void execute(String[] args) {
-        action.execute(args);
-    }
-}
 
+    @Override
+    public abstract void execute(String[] args);
+}
