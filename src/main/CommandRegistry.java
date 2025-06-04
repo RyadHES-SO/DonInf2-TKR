@@ -1,8 +1,7 @@
 
-
-
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class CommandRegistry {
     private Map<String, ICommand> commands = new HashMap<>();
@@ -11,8 +10,17 @@ public class CommandRegistry {
         commands.put(name, command);
     }
 
+    public Set<String> getCommandVerbs() {
+        return commands.keySet(); // commands est la Map interne
+    }
+
+    public Map<String, ICommand> getCommands() {
+        return commands;
+    }
+
     public void executeCommand(String input) {
-        if (input == null || input.isBlank()) return;
+        if (input == null || input.isBlank())
+            return;
 
         String[] parts = input.trim().split("\\s+");
         String name = parts[0];
@@ -27,12 +35,4 @@ public class CommandRegistry {
         }
     }
 
-    public void printHelp() {
-        System.out.println("Available commands:");
-        for (String name : commands.keySet()) {
-            System.out.println("- " + name);
-        }
-    }
-
-    
 }

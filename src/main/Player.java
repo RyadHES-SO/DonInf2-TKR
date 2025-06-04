@@ -11,6 +11,10 @@ public class Player {
         return name;
     }
 
+    public void addItem(Item item) {
+        inventory.addItem(item);
+    }
+
     public Inventory getInventory() {
         return inventory;
     }

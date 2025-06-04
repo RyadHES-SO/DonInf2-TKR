@@ -17,13 +17,13 @@ public class Game {
     public void run() {
         System.out.println("Running game...");
 
-        // Ajouter la commande "help"
+        // Ajoute les commandes
         registry.addCommand("help", new CommandHelp(registry));
-
-        // registry.addCommand(name:"look", new CommandLook(registry));
-        // Créer la commande move et l'ajouter
         registry.addCommand("move", new CommandMove(worldmap));
         registry.addCommand("map", new CommandMap(worldmap));
+        registry.addCommand("look", new CommandLook(worldmap));
+        registry.addCommand("take", new CommandTake(worldmap, player));
+        registry.addCommand("use", new CommandUse(player));
 
 
         
