@@ -1,48 +1,45 @@
-
 import java.util.Scanner;
 
 public class Game {
     private CommandRegistry registry;
     private Worldmap worldmap;
     private Player player;
-    
 
     public Game() {
         System.out.println("Initializing game...");
-        registry = new CommandRegistry(); // Instanciation du registre
+        registry = new CommandRegistry();
         worldmap = WorldBuilder.buildWorld();
         player = new Player("player1");
+
+        registry.addCommand("help", new CommandHelp(registry));
+        registry.addCommand("move", new CommandMove(worldmap));
+        registry.addCommand("use", new CommandUse(player));
     }
 
     public void run() {
-        System.out.println("Running game...");
+        System.out.println("Starting game...");
 
-        // Ajouter la commande "help"
-        registry.addCommand("help", new CommandHelp(registry));
-
-        // registry.addCommand(name:"look", new CommandLook(registry));
-        // Créer la commande move et l'ajouter
-        CommandMove moveAction = new CommandMove(worldmap);
-        Command moveCommand = new CommandMove(worldmap);
-        registry.addCommand("move", moveCommand);
-
-        // ajout Teicir -- commande Use : //
-
-        CommandUse useAction = new CommandUse(player); // tu utilises le player déclaré dans Game
-        Command useCommand = new Command("use", "Utilise un objet de l'inventaire", useAction);
-        registry.addCommand("use", useCommand);
-
-        // Boucle d'écoute des commandes
         Scanner scanner = new Scanner(System.in);
+
         while (true) {
+            worldmap.displayMap(); // Display map each turn
+
             System.out.print("> ");
             String input = scanner.nextLine();
-            if (input.equalsIgnoreCase("exit"))
+
+            if (input.equalsIgnoreCase("exit")) {
+                System.out.println("Game ended.");
                 break;
+            }
 
             registry.executeCommand(input);
         }
 
-        System.out.println("Game ended.");
+        scanner.close();
+    }
+
+    public static void main(String[] args) {
+        Game game = new Game();
+        game.run();
     }
 }

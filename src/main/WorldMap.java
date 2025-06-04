@@ -1,5 +1,3 @@
-
-
 public class Worldmap {
     private Location[][] worldmap;
     private int playerRow;
@@ -19,14 +17,12 @@ public class Worldmap {
         return playerColumn;
     }
 
-    // Ajoute une vraie Location à une case précise
     public void addLocation(Location location, int row, int column) {
         if (isInBounds(row, column)) {
             worldmap[row][column] = location;
         }
     }
 
-    // Récupère la Location à une position
     public Location getLocation(int row, int column) {
         if (isInBounds(row, column)) {
             return worldmap[row][column];
@@ -34,23 +30,18 @@ public class Worldmap {
         return null;
     }
 
-    // Donne la position actuelle du joueur
-    public int[] getPosition(Player player) {
-        return new int[] { playerRow, playerColumn };
-    }
-
-    // Donne la Location actuelle du joueur
     public Location getPlayerLocation() {
         return worldmap[playerRow][playerColumn];
     }
 
-    // Définit la position du joueur
     public void setPlayerLocation(int row, int column) {
-        if (isInBounds(row, column) && worldmap[row][column].getState()) {
+        if (isInBounds(row, column) && worldmap[row][column] != null && worldmap[row][column].getState()) {
             playerRow = row;
             playerColumn = column;
+            System.out.println("You are now at: " + worldmap[row][column].getName());
+            System.out.println(worldmap[row][column].getDescription());
         } else {
-            System.out.println("Impossible d'accéder à cette position (verrouillée ou hors limites).");
+            System.out.println("Cannot move to this location (locked or out of bounds).");
         }
     }
 
@@ -59,20 +50,38 @@ public class Worldmap {
     }
 
     public boolean tryMovePlayerTo(int newRow, int newColumn) {
-    if (isInBounds(newRow, newColumn)) {
-        Location next = worldmap[newRow][newColumn];
-        if (next.getState()) {
-            playerRow = newRow;
-            playerColumn = newColumn;
-            System.out.println("Tu te déplaces vers : " + next.getName());
-            System.out.println(next.getDescription());
-            return true;
+        if (isInBounds(newRow, newColumn)) {
+            Location next = worldmap[newRow][newColumn];
+            if (next != null && next.getState()) {
+                playerRow = newRow;
+                playerColumn = newColumn;
+                System.out.println("You move to: " + next.getName());
+                System.out.println(next.getDescription());
+                return true;
+            } else {
+                System.out.println("This area is locked.");
+            }
         } else {
-            System.out.println("Cette zone est verrouillée.");
+            System.out.println("Cannot move in that direction.");
         }
-    } else {
-        System.out.println("Impossible d'aller dans cette direction.");
+        return false;
     }
-    return false;
-}
+
+    // Displays the map with [P] as the player position
+    public void displayMap() {
+        for (int i = 0; i < worldmap.length; i++) {
+            for (int j = 0; j < worldmap[i].length; j++) {
+                if (i == playerRow && j == playerColumn) {
+                    System.out.print("[P]");
+                } else if (worldmap[i][j] == null) {
+                    System.out.print("[ ]");
+                } else if (!worldmap[i][j].getState()) {
+                    System.out.print("[X]");
+                } else {
+                    System.out.print("[ ]");
+                }
+            }
+            System.out.println();
+        }
+    }
 }
