@@ -17,21 +17,16 @@ public class Game {
     public void run() {
         System.out.println("Running game...");
 
-        // Ajouter la commande "help"
+        // Ajoute les commandes
         registry.addCommand("help", new CommandHelp(registry));
+        registry.addCommand("move", new CommandMove(worldmap));
+        registry.addCommand("map", new CommandMap(worldmap));
+        registry.addCommand("look", new CommandLook(worldmap));
+        registry.addCommand("take", new CommandTake(worldmap, player));
+        registry.addCommand("use", new CommandUse(player));
 
-        // registry.addCommand(name:"look", new CommandLook(registry));
-        // Créer la commande move et l'ajouter
-        CommandMove moveAction = new CommandMove(worldmap);
-        Command moveCommand = new CommandMove(worldmap);
-        registry.addCommand("move", moveCommand);
 
-        // ajout Teicir -- commande Use : //
-
-        CommandUse useAction = new CommandUse(player); // tu utilises le player déclaré dans Game
-        Command useCommand = new Command("use", "Utilise un objet de l'inventaire", useAction);
-        registry.addCommand("use", useCommand);
-
+        
         // Boucle d'écoute des commandes
         Scanner scanner = new Scanner(System.in);
         while (true) {

@@ -1,4 +1,4 @@
-
+import utils.IPrintable;
 
 public class Worldmap {
     private Location[][] worldmap;
@@ -50,7 +50,7 @@ public class Worldmap {
             playerRow = row;
             playerColumn = column;
         } else {
-            System.out.println("Impossible d'accéder à cette position (verrouillée ou hors limites).");
+            System.out.println("Unable to access this position (locked or out of bounds).");
         }
     }
 
@@ -59,20 +59,35 @@ public class Worldmap {
     }
 
     public boolean tryMovePlayerTo(int newRow, int newColumn) {
-    if (isInBounds(newRow, newColumn)) {
-        Location next = worldmap[newRow][newColumn];
-        if (next.getState()) {
-            playerRow = newRow;
-            playerColumn = newColumn;
-            System.out.println("Tu te déplaces vers : " + next.getName());
-            System.out.println(next.getDescription());
-            return true;
+        if (isInBounds(newRow, newColumn)) {
+            Location next = worldmap[newRow][newColumn];
+            if (next.getState()) {
+                playerRow = newRow;
+                playerColumn = newColumn;
+                System.out.println("You moved to : " + next.getName());
+                System.out.println(next.getDescription());
+                return true;
+            } else {
+                System.out.println("This location is locked.");
+            }
         } else {
-            System.out.println("Cette zone est verrouillée.");
+            System.out.println("Impossible to go in that direction.");
         }
-    } else {
-        System.out.println("Impossible d'aller dans cette direction.");
+        return false;
     }
-    return false;
+
+    public IPrintable[][] getMap() {
+    int rows = worldmap.length;
+    int cols = worldmap[0].length;
+    IPrintable[][] printableMap = new IPrintable[rows][cols];
+
+    for (int row = 0; row < rows; row++) {
+        for (int col = 0; col < cols; col++) {
+            printableMap[row][col] = worldmap[row][col];
+        }
+    }
+
+    return printableMap;
 }
+
 }
