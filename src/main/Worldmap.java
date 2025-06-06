@@ -1,4 +1,5 @@
 import utils.IPrintable;
+import utils.Array2Dprinter;
 
 public class Worldmap {
     private Location[][] worldmap;
@@ -66,6 +67,8 @@ public class Worldmap {
                 playerColumn = newColumn;
                 System.out.println("You moved to : " + next.getName());
                 System.out.println(next.getDescription());
+                // Affichage automatique de la map après déplacement
+                System.out.println(Array2Dprinter.print2DArray(getMap(), playerRow, playerColumn));
                 return true;
             } else {
                 System.out.println("This location is locked.");
@@ -75,6 +78,7 @@ public class Worldmap {
         }
         return false;
     }
+    
 
     public IPrintable[][] getMap() {
     int rows = worldmap.length;
