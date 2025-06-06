@@ -24,6 +24,9 @@ public class Game {
         registry.addCommand("look", new CommandLook(worldmap));
         registry.addCommand("take", new CommandTake(worldmap, player));
         registry.addCommand("use", new CommandUse(player));
+        registry.addCommand("inspect", new CommandInspect(player));
+
+
 
 
         

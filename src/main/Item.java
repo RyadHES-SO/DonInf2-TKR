@@ -15,6 +15,10 @@ public String getName(){
     return this.name;
 
     }
+    public void inspect() {
+        System.out.println("Inspecting " + name + ": " + description);
+    }
 }
+
     
 
