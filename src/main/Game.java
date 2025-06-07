@@ -5,6 +5,7 @@ public class Game {
     private CommandRegistry registry;
     private Worldmap worldmap;
     private Player player;
+    private Inventory inventory;
     
 
     public Game() {
@@ -12,6 +13,7 @@ public class Game {
         registry = new CommandRegistry(); // Instanciation du registre
         worldmap = WorldBuilder.buildWorld();
         player = new Player("player1");
+        inventory = new Inventory();
     }
 
     public void run() {
@@ -25,6 +27,8 @@ public class Game {
         registry.addCommand("take", new CommandTake(worldmap, player));
         registry.addCommand("use", new CommandUse(player));
         registry.addCommand("say", new CommandSay());
+        registry.addCommand("inspect", new CommandInspect(player));
+        registry.addCommand("inventory", new CommandInventory(inventory));
 
 
 

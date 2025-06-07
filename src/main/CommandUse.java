@@ -18,13 +18,12 @@ public class CommandUse extends Command {
 
         String itemName = String.join(" ", args);
 
-        // Recherche l'objet dans l'inventaire du joueur
-        List<Item> inventory = player.getInventory().getInventory();
 
-        Item item = inventory.stream()
-            .filter(i -> i.getName().equalsIgnoreCase(itemName))
-            .findFirst()
-            .orElse(null);
+        Item item = player.getItems().stream()
+                .filter(i -> i.getName().equalsIgnoreCase(itemName))
+                .findFirst()
+                .orElse(null);
+
 
         if (item == null) {
             System.out.println("You don't have this item.");

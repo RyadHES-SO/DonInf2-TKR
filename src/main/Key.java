@@ -2,7 +2,7 @@ public class Key extends Item {
     private Location targetLocation;  // La location que cette clé déverrouille
 
     public Key(String name, String description, Location targetLocation) {
-        super(name, description);
+        super(name, "Can unlock a location.");
         this.targetLocation = targetLocation;
     }
 
@@ -18,4 +18,11 @@ public class Key extends Item {
             System.out.println("You unlocked: " + targetLocation.getName());
         }
     }
+    @Override
+public void inspect() {
+    super.inspect();
+    System.out.println("This key unlocks: " + targetLocation.getName());
+}
+
+    
 }
