@@ -1,8 +1,9 @@
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class Location {
+import utils.IPrintable;
+
+public class Location implements IPrintable {
     private String name;
     private String description;
     private boolean state; // true = déverrouillé, false = verrouillé
@@ -45,5 +46,16 @@ public class Location {
 
     public List<Item> getItems() {
         return itemLocation;
+    }
+
+    // === IPrintable ===
+    @Override
+    public String getPrintableString() {
+        return state ? "O" : "X"; // O = déverrouillé, X = verrouillé
+    }
+
+    @Override
+    public boolean isGrayedOut() {
+        return !state;
     }
 }

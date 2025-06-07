@@ -1,43 +1,64 @@
 
-
 public class WorldBuilder {
     public static Worldmap buildWorld() {
-        Worldmap world = new Worldmap(4, 4);
+        Worldmap world = new Worldmap(3, 4);
 
         // Création des lieux
-        Location maison = new Location("Maison", "Ta maison, point de départ du voyage.", true);
-        Location foret = new Location("Forêt", "Une forêt verte remplie d'oiseaux.", false);
-        Location grotte = new Location("Grotte", "Une grotte sombre, semble verrouillée.", true);
-        Location lac = new Location("Lac", "Un lac paisible entouré de roseaux.", false);
-        Location montagne = new Location("Montagne", "Une montagne abrupte au sommet enneigé.", false);
+        Location home = new Location("Home", "Your home, the starting point of the journey.", true);
+        Location forest = new Location("Forest", "A green forest full of birds.", false);
+        Location cave = new Location("Cave", "An endless sea of sand under a burning sky.", false);
+        Location desert = new Location("Desert", "A mysterious dark cave", false);
+        Location abandonedVillage = new Location("Abandoned Village",
+                "Silent houses and empty streets, haunted by memories.", true);
+        Location swamp = new Location("Swamp", "A murky swamp where danger lurks beneath the surface.", false);
+        Location lake = new Location("Lake", "A peaceful lake surrounded by reeds.", false);
+        Location volcano = new Location("Volcano", "A fiery peak with lava flowing through cracks in the earth", false);
+        Location etherealGarden = new Location("Ethereal Garden",
+                "A surreal, floating garden where time seems to slow down.", false);
+        Location ancientRuins = new Location("Ancient Ruins", "Crumbling remains of a civilization long gone.", false);
+        Location mountain = new Location("Mountain", "A towering mountain that pierces the clouds", true);
+        Location watchtower = new Location("Watchtower", "A tall stone structure watching over the land.", false);
 
         // Placement dans la carte
-        world.addLocation(maison, 1, 1);      // centre
-        world.addLocation(foret, 1, 2);       // est
-        world.addLocation(grotte, 0, 1);      // nord
-        world.addLocation(lac, 2, 1);         // sud
-        world.addLocation(montagne, 1, 0);    // ouest
+        world.addLocation(home, 0, 0);
+        world.addLocation(forest, 0, 1);
+        world.addLocation(cave, 0, 2);
+        world.addLocation(desert, 0, 3);
+        world.addLocation(abandonedVillage, 1, 0);
+        world.addLocation(swamp, 1, 1);
+        world.addLocation(lake, 1, 2);
+        world.addLocation(volcano, 1, 3);
+        world.addLocation(etherealGarden, 2, 0);
+        world.addLocation(ancientRuins, 2, 1);
+        world.addLocation(mountain, 2, 2);
+        world.addLocation(watchtower, 2, 3);
 
         // Position de départ du joueur
-        world.setPlayerLocation(1, 1);
+        world.setPlayerLocation(0, 0);
 
-        // Création des clés pour les zones verrouillées
         // Création des clés
-         // Création des clés
-         Key cleForet = new Key("Clé de la forêt", "Une clé avec une feuille gravée, elle semble déverrouiller un lieu naturel.", foret);
-         Key cleGrotte = new Key("Clé de la grotte", "Une vieille clé rouillée. Elle semble pouvoir ouvrir la grotte.", grotte);
-         Key cleLac = new Key("Clé du lac", "Une clé ornée de vagues, parfaite pour une zone aquatique.", lac);
-         Key cleMontagne = new Key("Clé de la montagne", "Une clé lourde et solide, comme taillée dans la roche.", montagne);
- 
-         // Placement des clés dans les lieux accessibles
-         maison.addItem(cleForet);       // Clé pour la forêt
-         foret.addItem(cleGrotte);       // Clé pour la grotte
-         grotte.addItem(cleLac);         // Clé pour le lac
-         lac.addItem(cleMontagne);       // Clé pour la montagne
+        Key forestKey = new Key("Forest Key", "A key with an engraved leaf, it seems to unlock a natural place.",
+                forest);
+        Key caveKey = new Key("Cave Key", "An old rusty key. It seems to be able to open the cave.",
+                cave);
+        Key lakeKey = new Key("Lake Key", "A key decorated with waves, perfect for an aquatic area.", lake);
+        Key watchTowerKey = new Key("WatchTower Key", "A long, silver key with a spiral motif pointing skyward.",
+                watchtower);
+        Key ancientRuinsKey = new Key("Ancient Ruins Key", "A chipped stone key, with ancient glyphs etched onto it.",
+                ancientRuins);
+        Key swampKey = new Key("Swamp Key", "A moss-covered key, with a faint odor of decay", swamp);
+        Key desertKey = new Key("Desert Key", "A sun-warmed bronze key, dry and rough to the touch.", desert);
+        Key volcanoKey = new Key("Volcano Key", "Hot to the touch, this key glows faintly like molten rock.", volcano);
 
-        
- 
-        
+        // Placement des clés dans les lieux accessibles
+        home.addItem(forestKey);
+        forest.addItem(caveKey);
+        cave.addItem(lakeKey);
+        desert.addItem(watchTowerKey);
+        swamp.addItem(ancientRuinsKey);
+        lake.addItem(swampKey);
+        ancientRuins.addItem(desertKey);
+        mountain.addItem(volcanoKey);
 
         return world;
     }
