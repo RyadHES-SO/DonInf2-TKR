@@ -1,8 +1,6 @@
-
 public class CommandInspect extends Command {
     private Player player;
 
-    // Constructeur : on appelle super avec verb et description
     public CommandInspect(Player player) {
         super("inspect", "Inspect an item and get its description");
         this.player = player;
@@ -10,7 +8,18 @@ public class CommandInspect extends Command {
 
     @Override
     public void execute(String[] args) {
-        // Ici tu mets ton code d'inspection,
-        // par exemple args[0] = "letter" ou "key"
+        if (args.length == 0) {
+            System.out.println("Usage: inspect <item name>");
+            return;
+        }
+
+        String itemName = String.join(" ", args);
+        Item item = player.getItemByName(itemName);
+
+        if (item == null) {
+            System.out.println("You don't have an item named \"" + itemName + "\".");
+        } else {
+            item.inspect();
+        }
     }
 }
