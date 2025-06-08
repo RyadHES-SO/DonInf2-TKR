@@ -1,40 +1,42 @@
-public class CommandUse extends Command {
-    private Worldmap worldmap;
-    private Player player;
+import java.util.Scanner;
 
-    public CommandUse(Worldmap worldmap, Player player) {
+public class CommandUse extends Command {
+    private Player player;
+    private Scanner scanner; // scanner partagé
+
+    public CommandUse(Player player, Scanner scanner) {
         super("use", "Uses an item from the inventory.");
-        this.worldmap = worldmap;
         this.player = player;
+        this.scanner = scanner; // on garde la référence
     }
 
     @Override
     public void execute(String[] args) {
         if (args.length == 0) {
-            System.out.println("Usage: use <item_name>");
+            System.out.println("Usage: use <item name>");
             return;
         }
 
-        String itemName = String.join(" ", args); // pour gérer les noms à plusieurs mots
-        Item itemToUse = null;
-
-        for (Item item : player.getInventory().getInventory()) {
-            if (item.getName().equalsIgnoreCase(itemName)) {
-                itemToUse = item;
-                break;
-            }
-        }
+        String itemName = String.join(" ", args);
+        Item itemToUse = player.getItemByName(itemName);
 
         if (itemToUse == null) {
-            System.out.println("You don't have that item.");
+            System.out.println("You don't have an item named \"" + itemName + "\".");
             return;
         }
 
         if (itemToUse instanceof Key) {
             Key key = (Key) itemToUse;
-            key.use(); // déverrouille la location cible
-            player.getInventory().removeItem(key); // retirer la clé de l'inventaire
+            key.use();
+            player.getInventory().removeItem(key);
             System.out.println("The key has been removed from your inventory.");
+        } else if (itemToUse instanceof Letter) {
+            Letter letter = (Letter) itemToUse;
+            boolean solved = letter.use(scanner, player);
+            if (solved) {
+                player.getInventory().removeItem(letter);
+                System.out.println("The letter has been removed from your inventory.");
+            }
         } else {
             System.out.println("This item cannot be used.");
         }

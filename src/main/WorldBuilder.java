@@ -50,15 +50,74 @@ public class WorldBuilder {
         Key desertKey = new Key("Desert Key", "A sun-warmed bronze key, dry and rough to the touch.", desert);
         Key volcanoKey = new Key("Volcano Key", "Hot to the touch, this key glows faintly like molten rock.", volcano);
 
-        // Placement des clés dans les lieux accessibles
-        home.addItem(forestKey);
-        forest.addItem(caveKey);
-        cave.addItem(lakeKey);
-        desert.addItem(watchTowerKey);
-        swamp.addItem(ancientRuinsKey);
-        lake.addItem(swampKey);
-        ancientRuins.addItem(desertKey);
-        mountain.addItem(volcanoKey);
+        // création des énigmes
+        Riddle forestRiddle = new Riddle(
+                "Rooted and vast, I dance with the breeze. My leaves whisper stories, though I speak no words. What am I?",
+                "Tree");
+        Riddle caveRiddle = new Riddle(
+                "I repeat what you say, Then I fade away. What am I?",
+                "Echo");
+        Riddle lakeRiddle = new Riddle(
+                "I show your face but have no eyes. I am calm or sometimes move. What am I?",
+                "Water");
+        Riddle watchTowerRiddle = new Riddle(
+                "I stand tall, so you can see far. From my top, the world looks small. What am I?",
+                "Hill");
+        Riddle ancientRuinsRiddle = new Riddle(
+                "Once grand and strong, now weathered by time. I hold the tales of knights and kings. What am I??",
+                "Castle");
+        Riddle swampRiddle = new Riddle(
+                "Still water covered with plants, home to creatures you don’t see. What am I?",
+                "Marsh");
+        Riddle desertRiddle = new Riddle(
+                "Endless sands roll beneath the sun. Nights grow cold where no rivers run. What am I?",
+                "Dune");
+        Riddle volcanoRiddle = new Riddle(
+                "I flow but am not water, born from fire, I shape the land.",
+                "Lava");
+
+        // création des lettres avec les énigmes dedans
+        Letter forestLetter = new Letter(
+                "Forest Letter",
+                "An old piece of paper with something written on it.", forestRiddle, forestKey);
+        Letter caveLetter = new Letter(
+                "Cave Letter",
+                "A dusty parchment, the writing nearly faded.",
+                caveRiddle, caveKey);
+        Letter lakeLetter = new Letter(
+                "Lake Letter",
+                "A damp note with delicate ink strokes.",
+                lakeRiddle, lakeKey);
+        Letter watchTowerLetter = new Letter(
+                "WatchTower Letter",
+                "A scroll sealed with a symbol of vision.",
+                watchTowerRiddle, watchTowerKey);
+        Letter ancientRuinsLetter = new Letter(
+                "Ancient Ruins Letter",
+                "A brittle document from a forgotten era.",
+                ancientRuinsRiddle, ancientRuinsKey);
+        Letter swampLetter = new Letter(
+                "Swamp Letter",
+                "A soggy letter, its scent earthy and old.",
+                swampRiddle, swampKey);
+        Letter desertLetter = new Letter(
+                "Desert Letter",
+                "A sand-stained letter, warm to the touch.",
+                desertRiddle, desertKey);
+        Letter volcanoLetter = new Letter(
+                "Volcano Letter",
+                "A scorched letter, edges blackened by heat.",
+                volcanoRiddle, volcanoKey);
+
+        // Placement des lettres dans chaque location
+        home.addItem(forestLetter);
+        forest.addItem(caveLetter);
+        cave.addItem(lakeLetter);
+        desert.addItem(watchTowerLetter);
+        swamp.addItem(ancientRuinsLetter);
+        lake.addItem(swampLetter);
+        ancientRuins.addItem(desertLetter);
+        mountain.addItem(volcanoLetter);
 
         return world;
     }

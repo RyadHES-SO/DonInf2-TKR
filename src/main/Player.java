@@ -24,4 +24,14 @@ public class Player {
      public List<Item> getItems() {
         return inventory.getInventory();
     }
+
+    public Item getItemByName(String name) {
+    for (Item item : inventory.getInventory()) {
+        if (item.getName().equalsIgnoreCase(name)) {
+            return item;
+        }
+    }
+    return null;
+}
+
 }
