@@ -12,7 +12,6 @@ public class CommandLook extends Command {
     public void execute(String[] args) {
         Location currentLocation = worldmap.getPlayerLocation();
 
-
         List<Item> items = currentLocation.getItems();
 
         if (items.isEmpty()) {

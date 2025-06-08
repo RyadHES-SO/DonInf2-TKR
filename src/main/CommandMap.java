@@ -16,7 +16,6 @@ public class CommandMap extends Command {
         int playerRow = worldmap.getPlayerRow();
         int playerCol = worldmap.getPlayerColumn();
 
-        String printedMap = Array2Dprinter.print2DArray(map, playerRow, playerCol);
-        System.out.println(printedMap);
+        System.out.println(Array2Dprinter.print2DArray(map, playerRow, playerCol));
     }
 }

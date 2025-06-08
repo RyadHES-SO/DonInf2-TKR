@@ -37,6 +37,5 @@ public class CommandMove extends Command {
         }
 
         world.tryMovePlayerTo(row, col);
-
     }
 }

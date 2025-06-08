@@ -19,7 +19,7 @@ public class WorldBuilder {
         Location mountain = new Location("Mountain", "A towering mountain that pierces the clouds", true);
         Location watchtower = new Location("Watchtower", "A tall stone structure watching over the land.", false);
 
-        // Placement dans la carte
+        // Placement des location dans la carte
         world.addLocation(home, 0, 0);
         world.addLocation(forest, 0, 1);
         world.addLocation(cave, 0, 2);

@@ -78,20 +78,18 @@ public class Worldmap {
         }
         return false;
     }
-    
 
     public IPrintable[][] getMap() {
-    int rows = worldmap.length;
-    int cols = worldmap[0].length;
-    IPrintable[][] printableMap = new IPrintable[rows][cols];
+        int rows = worldmap.length;
+        int cols = worldmap[0].length;
+        IPrintable[][] printableMap = new IPrintable[rows][cols];
 
-    for (int row = 0; row < rows; row++) {
-        for (int col = 0; col < cols; col++) {
-            printableMap[row][col] = worldmap[row][col];
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                printableMap[row][col] = worldmap[row][col];
+            }
         }
+
+        return printableMap;
     }
-
-    return printableMap;
-}
-
 }

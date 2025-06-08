@@ -21,17 +21,17 @@ public class Player {
         return inventory;
     }
 
-     public List<Item> getItems() {
+    public List<Item> getItems() {
         return inventory.getInventory();
     }
 
     public Item getItemByName(String name) {
-    for (Item item : inventory.getInventory()) {
-        if (item.getName().equalsIgnoreCase(name)) {
-            return item;
+        for (Item item : inventory.getInventory()) {
+            if (item.getName().equalsIgnoreCase(name)) {
+                return item;
+            }
         }
+        return null;
     }
-    return null;
-}
 
 }

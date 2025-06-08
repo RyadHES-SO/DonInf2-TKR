@@ -34,5 +34,4 @@ public class CommandRegistry {
             System.out.println("Unknown command: " + name);
         }
     }
-
 }

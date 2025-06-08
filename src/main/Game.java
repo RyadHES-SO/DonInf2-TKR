@@ -4,20 +4,21 @@ public class Game {
     private CommandRegistry registry;
     private Worldmap worldmap;
     private Player player;
-    private Scanner scanner;  // Scanner unique partagé
+    private Scanner scanner; // Scanner unique partagé
 
     public Game() {
+        // Création des instances
         System.out.println("Initializing game...");
-        registry = new CommandRegistry(); // Instanciation du registre
+        registry = new CommandRegistry();
         worldmap = WorldBuilder.buildWorld();
         player = new Player("player1");
-        scanner = new Scanner(System.in); // Création du scanner unique
+        scanner = new Scanner(System.in);
     }
 
     public void run() {
         System.out.println("Running game...");
 
-        // Ajoute les commandes, en passant le scanner à CommandUse
+        // Ajout des commandes au registery
         registry.addCommand("help", new CommandHelp(registry));
         registry.addCommand("move", new CommandMove(worldmap));
         registry.addCommand("map", new CommandMap(worldmap));
@@ -39,6 +40,6 @@ public class Game {
         }
 
         System.out.println("Game ended.");
-        scanner.close(); // On ferme le scanner à la fin
+        scanner.close(); // fermeture du scanner à la fin
     }
 }
